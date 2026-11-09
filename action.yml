@@ -47,7 +47,7 @@ runs:
 
     - name: Build the Wiki
       id: publish
-      uses: sysevol-ai/CodeNib/.github/actions/publish@9d1e5172039614897d72858820d20a9ceb91390b # main, 2026-11-09 (CodeNib #1046)
+      uses: sysevol-ai/CodeNib/.github/actions/publish@af212173dd4044f4eaaca13dc8f85f0b1f0be197 # main, 2026-11-09 (CodeNib #1047)
       env:
         CODENIB_ACTION_WIKI_KEY: ${{ inputs.api-key }}
       with:
