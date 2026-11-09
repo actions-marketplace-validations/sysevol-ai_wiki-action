@@ -2,8 +2,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# Published from marketplace/wiki-action in sysevol-ai/CodeNib. Change it
-# there, then copy it here with the CodeNib commit below pinned.
+# The CodeNib Wiki action. It runs CodeNib's publish action at the commit
+# pinned below; a release moves that pin, and CodeNib's tests guard the
+# inputs and outputs used here.
 name: CodeNib Wiki
 description: >-
   Publish a source-linked Wiki of your repository on GitHub Pages, with every

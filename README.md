@@ -56,9 +56,8 @@ the published Wiki.
 
 ## Source
 
-This action is published from
-[`marketplace/wiki-action`](https://github.com/sysevol-ai/CodeNib/tree/main/marketplace/wiki-action)
-in CodeNib, and installs CodeNib from the commit `action.yml` pins. The
+This repository is the action's source. Each release installs CodeNib from
+the commit `action.yml` pins. The
 [GitHub Pages guide](https://docs.codenib.ai/github_pages/) covers the options
 in full. Report problems in
 [CodeNib's issues](https://github.com/sysevol-ai/CodeNib/issues).
