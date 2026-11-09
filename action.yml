@@ -6,8 +6,8 @@
 # there, then copy it here with the CodeNib commit below pinned.
 name: CodeNib Wiki
 description: >-
-  Publish a source-linked Wiki of this repository on GitHub Pages: a map of its
-  parts, and pages whose every claim links to the exact lines.
+  Publish a source-linked Wiki of your repository on GitHub Pages, with every
+  claim linked to the exact lines.
 author: CodeNib Contributors
 branding:
   icon: book-open
