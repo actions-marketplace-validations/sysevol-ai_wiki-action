@@ -1,0 +1,64 @@
+<!--
+SPDX-FileCopyrightText: 2026 CodeNib Contributors
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+# CodeNib Wiki action
+
+Publish a source-linked Wiki of your repository on GitHub Pages. The Wiki opens
+as a map of the code's parts; every page explains what the code does and links
+each claim to the exact lines. The code graph comes from compiler-grade
+indexers, not from a model's guess.
+
+```yaml
+name: CodeNib Wiki
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.wiki.outputs.page-url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: sysevol-ai/wiki-action@v1
+        id: wiki
+        with:
+          api-key: ${{ secrets.OPENROUTER_API_KEY }}
+```
+
+1. In **Settings > Pages**, choose **GitHub Actions** as the source.
+2. Add an [OpenRouter](https://openrouter.ai/) key as the Actions secret
+   `OPENROUTER_API_KEY`, with a spending limit on the key.
+3. Push. The first run writes every page; later pushes rewrite only the pages
+   whose source files changed. Run the workflow with `full-rebuild: true` to
+   pick up new parts of the code.
+
+Without `api-key`, set `wiki: index` for pages derived from the index alone.
+Pages that fail their quality checks are left out and written again on the
+next push. If the Overview fails, or fewer than 80% of the pages pass, the
+index-derived pages are deployed instead, with a warning on the run.
+
+Run `codenib pages badge` in the repository for a README badge that links to
+the published Wiki.
+
+## Source
+
+This action is published from
+[`marketplace/wiki-action`](https://github.com/sysevol-ai/CodeNib/tree/main/marketplace/wiki-action)
+in CodeNib, and installs CodeNib from the commit `action.yml` pins. The
+[GitHub Pages guide](https://docs.codenib.ai/github_pages/) covers the options
+in full. Report problems in
+[CodeNib's issues](https://github.com/sysevol-ai/CodeNib/issues).
