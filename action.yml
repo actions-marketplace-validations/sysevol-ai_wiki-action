@@ -16,10 +16,10 @@ branding:
 
 inputs:
   wiki:
-    description: story for model-written pages, or index for pages without a model.
+    description: Deprecated. The Wiki is always written by a model; index was removed.
     default: story
   api-key:
-    description: Model key for story pages, such as secrets.OPENROUTER_API_KEY.
+    description: Required. Model key that writes the Wiki, such as secrets.OPENROUTER_API_KEY.
     default: ""
   model:
     description: LiteLLM model that writes story pages.
@@ -48,7 +48,7 @@ runs:
 
     - name: Build the Wiki
       id: publish
-      uses: sysevol-ai/CodeNib/.github/actions/publish@af212173dd4044f4eaaca13dc8f85f0b1f0be197 # main, 2026-11-09 (CodeNib #1047)
+      uses: sysevol-ai/CodeNib/.github/actions/publish@05f2df6b39b4bd03091b3fc8040e3566d48ca0b5 # main, 2026-11-11 (CodeNib #1067)
       env:
         CODENIB_ACTION_WIKI_KEY: ${{ inputs.api-key }}
       with:

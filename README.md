@@ -46,10 +46,14 @@ jobs:
    whose source files changed. Run the workflow with `full-rebuild: true` to
    pick up new parts of the code.
 
-Without `api-key`, set `wiki: index` for pages derived from the index alone.
+The Wiki is always written by a model, so `api-key` is required. Without it
+the run stops before it indexes anything and says how to add one. Earlier
+releases also took `wiki: index` for pages without a model; that mode was
+removed, and a workflow that still sets it stops with a message.
+
 Pages that fail their quality checks are left out and written again on the
-next push. If the Overview fails, or fewer than 80% of the pages pass, the
-index-derived pages are deployed instead, with a warning on the run.
+next push. If the Overview fails, or fewer than 80% of the pages pass, the run
+fails and nothing is deployed; the Wiki from the last successful run stays.
 
 Run `codenib pages badge` in the repository for a README badge that links to
 the published Wiki.
